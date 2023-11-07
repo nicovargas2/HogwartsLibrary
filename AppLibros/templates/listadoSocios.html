@@ -1,0 +1,15 @@
+{% extends 'padre.html'%}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1><u>Listado de socios</u></h1>
+<ul>
+    {% for socio in socios %}
+    <li>{{socio.nombre}} - {{socio.apellido}} - {{ socio.ficha_id}}</li>
+    {% endfor %}
+</ul>
+
+
+{% endblock contenido %}

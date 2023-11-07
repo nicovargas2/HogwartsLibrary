@@ -1,0 +1,14 @@
+{% extends 'padre.html'%}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1><u>Listado de autores</u></h1>
+<ul>
+    {% for autor in autores %}
+    <li>{{socio.nombre}} - {{socio.apellido}} - {{ socio.ficha_id}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock contenido %}

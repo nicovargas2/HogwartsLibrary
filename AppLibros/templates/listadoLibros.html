@@ -1,0 +1,15 @@
+{% extends 'padre.html'%}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1><u>Listado de libros</u></h1>
+<ul>
+    {% for libro in libros %}
+    <li>{{libro.titulo}} - {{libro.autor}} - {{ libro.cantidad_paginas}}</li>
+    {% endfor %}
+</ul>
+
+
+{% endblock contenido %}
