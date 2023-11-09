@@ -4,12 +4,17 @@
 
 {% block contenido %}
 
+<div>
+    <span>&nbsp;&nbsp;</span><a href={% url "AppLibros:buscar_socio" %}>Buscar un socio</a>
+    <span>&nbsp;&nbsp;</span><a href={% url "AppLibros:agregar_socio" %}>Agregar un socio</a>
+
+</div>
+
 <h1><u>Listado de socios</u></h1>
 <ul>
     {% for socio in socios %}
     <li>{{socio.nombre}} - {{socio.apellido}} - {{ socio.ficha_id}}</li>
     {% endfor %}
 </ul>
-
 
 {% endblock contenido %}

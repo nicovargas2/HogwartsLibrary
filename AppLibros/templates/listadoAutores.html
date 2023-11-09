@@ -4,11 +4,17 @@
 
 {% block contenido %}
 
+<div>
+    <span>&nbsp;&nbsp;</span><a href={% url "AppLibros:buscar_autor" %}>Buscar un autor</a>
+    <span>&nbsp;&nbsp;</span><a href={% url "AppLibros:agregar_autor" %}>Agregar un autor</a>
+</div>
+
 <h1><u>Listado de autores</u></h1>
 <ul>
     {% for autor in autores %}
-    <li>{{socio.nombre}} - {{socio.apellido}} - {{ socio.ficha_id}}</li>
+    <li>{{autor.nombre}} - {{autor.apellido}} - {{ autor.ficha_id}}</li>
     {% endfor %}
 </ul>
+
 
 {% endblock contenido %}
