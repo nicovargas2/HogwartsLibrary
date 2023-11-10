@@ -4,12 +4,18 @@
 
 {% block contenido %}
 
+<div>
+    <span>&nbsp;&nbsp;</span><a href={% url "AppLibros:buscar_libro" %}>Buscar un libro</a>
+    <span>&nbsp;&nbsp;</span><a href={% url "AppLibros:agregar_libro" %}>Agregar un libro</a>
+</div>
+
 <h1><u>Listado de libros</u></h1>
 <ul>
     {% for libro in libros %}
     <li>{{libro.titulo}} - {{libro.autor}} - {{ libro.cantidad_paginas}}</li>
     {% endfor %}
 </ul>
+
 
 
 {% endblock contenido %}
