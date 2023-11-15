@@ -1,0 +1,18 @@
+{% extends 'padre.html'%}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1> Listado de libros </h1>
+
+<a href={% url "AppLibros:NuevoLibro" %}>Nuevo Libro</a>
+{% for libro in libros %}
+<p> {{ libro.titulo }} - {{ libro.autor }}
+    <a href={% url "AppLibros:DetalleLibro" libro.pk %}>Ver</a>
+    <a href={% url "AppLibros:EditarLibro" libro.pk %}>Editar</a>
+    <a href={% url "AppLibros:BorrarLibro" libro.pk %}>Borrar</a>
+</p>
+{% endfor %}
+
+{% endblock contenido %}

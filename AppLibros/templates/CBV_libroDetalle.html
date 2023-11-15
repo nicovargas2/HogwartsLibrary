@@ -1,0 +1,15 @@
+{% extends 'padre.html'%}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1> Libro Detalle </h1>
+
+<p>Titulo: <i>{{ libro.titulo}}</i></p>
+<p>Autor: <i>{{ libro.autor}}</i></p>
+<p>
+    <a href={% url "AppLibros:ListaLibros" %}>Regresar</a>
+</p>
+
+{% endblock contenido %}
