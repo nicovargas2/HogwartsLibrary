@@ -1,0 +1,20 @@
+{% extends 'padre.html'%}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1> Editar Libro </h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <input type="submit" value="Editar">
+</form>
+
+<br />
+<p>
+    <a href={% url "AppLibros:ListaLibros" %}>Regresar</a>
+</p>
+
+{% endblock contenido %}

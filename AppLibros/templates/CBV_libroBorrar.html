@@ -1,0 +1,19 @@
+{% extends 'padre.html'%}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1> Borrar un libro </h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    Estas seguro que deseas borrar el libro: {{ libro.titulo}} ?
+    <input type="submit" value="Eliminar">
+</form>
+<br />
+<p>
+    <a href={% url "AppLibros:ListaLibros" %}>Regresar</a>
+</p>
+
+{% endblock contenido %}
