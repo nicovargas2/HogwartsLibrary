@@ -1,0 +1,17 @@
+{% extends 'padre.html'%}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1> Detalle socio </h1>
+
+<p>Fecha id: <i>{{ socio.ficha_id}}</i></p>
+<p>Nombre: <i>{{ socio.nombre}}</i></p>
+<p>Apellido: <i>{{ socio.apellido}}</i></p>
+<p>Fecha de nacimiento: <i>{{ socio.fecha_nacimiento}}</i></p>
+<p>
+    <a href={% url "AppLibros:ListaSocios" %}>Regresar</a>
+</p>
+
+{% endblock contenido %}

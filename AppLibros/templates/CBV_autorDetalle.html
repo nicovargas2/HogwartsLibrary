@@ -1,0 +1,16 @@
+{% extends 'padre.html'%}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1> Autor Detalle </h1>
+
+<p>Nombre: <i>{{ autor.nombre}}</i></p>
+<p>Apellido: <i>{{ autor.apellido}}</i></p>
+<p>Fecha de nacimiento: <i>{{ autor.fecha_nacimiento}}</i></p>
+<p>
+    <a href={% url "AppLibros:ListaAutores" %}>Regresar</a>
+</p>
+
+{% endblock contenido %}
