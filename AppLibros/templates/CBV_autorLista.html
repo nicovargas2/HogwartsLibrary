@@ -1,0 +1,18 @@
+{% extends 'padre.html'%}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1> Listado de autores </h1>
+
+<a href={% url "AppLibros:NuevoAutor" %}>Nuevo Autor</a>
+{% for autor in autores %}
+<p> {{ autor.nombre }} {{ autor.apellido }} - {{ autor.fecha_nacimiento }}
+    <a href={% url "AppLibros:DetalleAutor" autor.pk %}>Ver</a>
+    <a href={% url "AppLibros:EditarAutor" autor.pk %}>Editar</a>
+    <a href={% url "AppLibros:BorrarAutor" autor.pk %}>Borrar</a>
+</p>
+{% endfor %}
+
+{% endblock contenido %}

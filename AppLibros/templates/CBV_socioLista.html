@@ -1,0 +1,18 @@
+{% extends 'padre.html'%}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1> Listado de socios </h1>
+
+<a href={% url "AppLibros:NuevoSocio" %}>Nuevo socio</a>
+{% for socio in socios %}
+<p> {{ socio.nombre }} - {{ socio.apellido }}
+    <a href={% url "AppLibros:DetalleSocio" socio.pk %}>Ver</a>
+    <a href={% url "AppLibros:EditarSocio" socio.pk %}>Editar</a>
+    <a href={% url "AppLibros:BorrarSocio" socio.pk %}>Borrar</a>
+</p>
+{% endfor %}
+
+{% endblock contenido %}
