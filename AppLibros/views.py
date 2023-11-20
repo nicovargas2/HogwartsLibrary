@@ -2,11 +2,16 @@ from django.http import HttpResponse
 from django.template import Template, Context, loader
 from . import models
 from django.shortcuts import redirect, render
-from .forms import LibroForm, AutorForm, SocioForm
+from .forms import LibroForm, AutorForm, SocioForm, UserCreationFormCustom
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, authenticate
+from django.contrib import messages
+from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 
 def buscar_autor(request):
@@ -202,3 +207,41 @@ class AutorDeleteView(DeleteView):
     template_name = "CBV_autorBorrar.html"
     success_url = reverse_lazy("AppLibros:ListaAutores")
     fields = ["nombre", "apellido", "fecha_nacimiento"]
+
+
+def login_request(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+
+        if form.is_valid():
+            usuario = form.cleaned_data.get("username")
+            contrasena = form.cleaned_data.get("password")
+
+            user = authenticate(username=usuario, password=contrasena)
+
+            login(request, user)
+            return render(
+                request, "index.html", {"mensaje": f"Bienvenido {user.username}"}
+            )
+        else:
+            return render(
+                request, "index.html", {"mensaje": f"Error al intentar login."}
+            )
+    else:
+        form = AuthenticationForm()
+    return render(request, "login.html", {"form": form})
+
+
+def registro(request):
+    if request.method == "POST":
+        form = UserCreationFormCustom(request.POST)
+        if form.is_valid():
+            form.save()
+            new_user_username = form.cleaned_data.get("username")
+            messages.success = (request, f"Usuario {new_user_username}creado")
+            form = UserCreationFormCustom()
+    else:
+        form = UserCreationFormCustom()
+
+    context = {"form": form}
+    return render(request, "registro.html", context)
