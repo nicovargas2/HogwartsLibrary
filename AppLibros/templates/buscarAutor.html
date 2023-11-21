@@ -6,4 +6,26 @@
 
 <h1> Buscar un autor </h1>
 
+{% if autor_buscado or autores %}
+<p>Estoy buscando el autor: {{ autor_buscado }}</p>
+<ul>
+    {% for a in autores %}
+    <li> {{ a.nombre}} - {{ a.apellido}} </li>
+    {% endfor %}
+</ul>
+
+<p>
+    <a href={% url "AppLibros:ListaAutores" %}>Regresar</a>
+</p>
+
+{% else %}
+<form action="buscar/resultados" method="get">
+    <label for="autorBuscado">Autor</label>
+    <input type="text" name="autorBuscado" id="autorBuscado">
+    <input type="submit" value="Buscar">
+</form>
+{% endif %}
+
+
+
 {% endblock contenido %}

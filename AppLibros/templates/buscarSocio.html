@@ -6,4 +6,24 @@
 
 <h1> Buscar un socio </h1>
 
+{% if socio_buscado or socios %}
+<p>Estoy buscando el socio: {{ socio_buscado }}</p>
+<ul>
+    {% for s in socios %}
+    <li> {{ s.nombre}} - {{ s.apellido}} </li>
+    {% endfor %}
+</ul>
+
+<p>
+    <a href={% url "AppLibros:ListaSocios" %}>Regresar</a>
+</p>
+
+{% else %}
+<form action="buscar/resultados" method="get">
+    <label for="socioBuscado">Socio</label>
+    <input type="text" name="socioBuscado" id="socioBuscado">
+    <input type="submit" value="Buscar">
+</form>
+{% endif %}
+
 {% endblock contenido %}

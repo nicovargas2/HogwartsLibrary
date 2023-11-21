@@ -6,7 +6,8 @@
 
 <h1> Listado de socios </h1>
 
-<a href={% url "AppLibros:NuevoSocio" %}>Nuevo socio</a>
+<a href={% url "AppLibros:NuevoSocio" %}>Nuevo socio</a><span>&nbsp<span>
+<a href={% url "AppLibros:buscar_socio" %}>Buscar socio</a>
 {% for socio in socios %}
 <p> {{ socio.nombre }} - {{ socio.apellido }}
     <a href={% url "AppLibros:DetalleSocio" socio.pk %}>Ver</a>
