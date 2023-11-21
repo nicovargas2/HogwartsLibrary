@@ -11,16 +11,26 @@ class LibroForm(forms.ModelForm):
         fields = ["titulo", "autor", "cantidad_paginas"]
 
 
+class DateInput(forms.DateInput):
+    input_type = "date"
+
+
 class AutorForm(forms.ModelForm):
     class Meta:
         model = Autor
         fields = ["nombre", "apellido", "fecha_nacimiento"]
+        widgets = {
+            "fecha_nacimiento": DateInput(),
+        }
 
 
 class SocioForm(forms.ModelForm):
     class Meta:
         model = Socio
         fields = ["nombre", "apellido", "fecha_nacimiento", "ficha_id"]
+        widgets = {
+            "fecha_nacimiento": DateInput(),
+        }
 
 
 class UserCreationFormCustom(UserCreationForm):
