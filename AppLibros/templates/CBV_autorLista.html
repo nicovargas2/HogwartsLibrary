@@ -6,7 +6,8 @@
 
 <h1> Listado de autores </h1>
 
-<a href={% url "AppLibros:NuevoAutor" %}>Nuevo Autor</a>
+<a href={% url "AppLibros:NuevoAutor" %}>Nuevo Autor</a><span>&nbsp<span>
+<a href={% url "AppLibros:buscar_autor" %}>Buscar autor</a>
 {% for autor in autores %}
 <p> {{ autor.nombre }} {{ autor.apellido }} - {{ autor.fecha_nacimiento }}
     <a href={% url "AppLibros:DetalleAutor" autor.pk %}>Ver</a>

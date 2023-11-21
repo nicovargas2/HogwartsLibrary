@@ -8,8 +8,11 @@ app_name = "AppLibros"
 urlpatterns = [
     path("index/", views.index, name="index"),
     path("libro/buscar", views.buscar_libro, name="buscar_libro"),
+    path("libro/buscar/resultados", views.buscar_libro_accion),
     path("autor/buscar", views.buscar_autor, name="buscar_autor"),
+    path("autor/buscar/resultados", views.buscar_autor_accion),
     path("socio/buscar", views.buscar_socio, name="buscar_socio"),
+    path("socio/buscar/resultados", views.buscar_socio_accion),
     # path("libro/agregar/", views.agregar_libro, name="agregar_libro"),
     # path("libros/", views.listar_libros, name="libros"),
     # path("autor/agregar/", views.agregar_autor, name="agregar_autor"),

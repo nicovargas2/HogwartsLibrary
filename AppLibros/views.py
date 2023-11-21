@@ -16,31 +16,64 @@ from django.core.exceptions import ValidationError
 
 def buscar_autor(request):
     plantilla = loader.get_template("buscarAutor.html")
-
     return HttpResponse(plantilla.render())
 
 
+def buscar_autor_accion(request):
+    if request.method == "GET":
+        autor_buscado = request.GET["autorBuscado"]
+        autores = models.Autor.objects.filter(nombre__icontains=autor_buscado)
+        # return render(request, "buscarLibro.html", {"titulo_buscado": titulo_buscado})
+        return render(
+            request,
+            "buscarAutor.html",
+            {"autores": autores, "autor_buscado": autor_buscado},
+        )
+    else:
+        mensaje = "No se encontró ningun autor"
+        plantilla = loader.get_template("buscarAutor.html")
+        return HttpResponse(plantilla.render({"mensaje": mensaje}))
+
+
 def buscar_libro(request):
-    # if request.method == "GET":
-    #     if request.GET["titulo"]:
-    #         titulo = request.GET["titulo"]
-    #         libros = models.Libro.objects.filter(titulo__icontains=titulo)
-    #         return render(
-    #             request, "buscarLibro.html", {"libros": libros, "tituloBuscado": titulo}
-    #         )
-    # else:
-    #     plantilla = loader.get_template("buscarLibro.html")
-    #     return HttpResponse(
-    #         plantilla.render({"mensaje": "No se encontró ningun libro con ese titulo"})
-    #     )
     plantilla = loader.get_template("buscarLibro.html")
     return HttpResponse(plantilla.render())
 
 
+def buscar_libro_accion(request):
+    if request.method == "GET":
+        titulo_buscado = request.GET["tituloBuscado"]
+        libros = models.Libro.objects.filter(titulo__icontains=titulo_buscado)
+        # return render(request, "buscarLibro.html", {"titulo_buscado": titulo_buscado})
+        return render(
+            request,
+            "buscarLibro.html",
+            {"libros": libros, "titulo_buscado": titulo_buscado},
+        )
+    else:
+        mensaje = "No se encontró ningun libro con ese titulo"
+        plantilla = loader.get_template("buscarLibro.html")
+        return HttpResponse(plantilla.render({"mensaje": mensaje}))
+
+
 def buscar_socio(request):
     plantilla = loader.get_template("buscarSocio.html")
-
     return HttpResponse(plantilla.render())
+
+
+def buscar_socio_accion(request):
+    if request.method == "GET":
+        socio_buscado = request.GET["socioBuscado"]
+        socios = models.Socio.objects.filter(nombre__icontains=socio_buscado)
+        return render(
+            request,
+            "buscarSocio.html",
+            {"socios": socios, "socio_buscado": socio_buscado},
+        )
+    else:
+        mensaje = "No se encontró ningun socio con ese nombre"
+        plantilla = loader.get_template("buscarSocio.html")
+        return HttpResponse(plantilla.render({"mensaje": mensaje}))
 
 
 # def listar_autores(request):

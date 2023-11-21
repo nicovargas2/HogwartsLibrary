@@ -6,5 +6,26 @@
 
 <h1> Buscar un libro </h1>
 
+{% if titulo_buscado or libros %}
+<p>Estoy buscando el titulo: {{ titulo_buscado }}</p>
+<ul>
+    {% for l in libros%}
+    <li> {{ l.titulo}} - {{ l.autor}} - {{ l.cantidad_paginas}} </li>
+    {% endfor %}
+</ul>
+
+<p>
+    <a href={% url "AppLibros:ListaLibros" %}>Regresar</a>
+</p>
+
+{% else %}
+<form action="buscar/resultados" method="get">
+    <label for="tituloBuscado">Título</label>
+    <input type="text" name="tituloBuscado" id="tituloBuscado">
+    <input type="submit" value="Buscar">
+</form>
+{% endif %}
+
+
 
 {% endblock contenido %}
