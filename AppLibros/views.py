@@ -23,7 +23,6 @@ def buscar_autor_accion(request):
     if request.method == "GET":
         autor_buscado = request.GET["autorBuscado"]
         autores = models.Autor.objects.filter(nombre__icontains=autor_buscado)
-        # return render(request, "buscarLibro.html", {"titulo_buscado": titulo_buscado})
         return render(
             request,
             "buscarAutor.html",
@@ -44,7 +43,6 @@ def buscar_libro_accion(request):
     if request.method == "GET":
         titulo_buscado = request.GET["tituloBuscado"]
         libros = models.Libro.objects.filter(titulo__icontains=titulo_buscado)
-        # return render(request, "buscarLibro.html", {"titulo_buscado": titulo_buscado})
         return render(
             request,
             "buscarLibro.html",
@@ -78,31 +76,22 @@ def buscar_socio_accion(request):
 
 # def listar_autores(request):
 #     autores = models.Autor.objects.all()
-
 #     dic_autores = {"autores": autores}
-
 #     plantilla = loader.get_template("listadoAutores.html")
-
 #     return HttpResponse(plantilla.render(dic_autores))
 
 
 # def listar_libros(request):
 #     libros = models.Libro.objects.all()
-
 #     dic_libros = {"libros": libros}
-
 #     plantilla = loader.get_template("listadoLibros.html")
-
 #     return HttpResponse(plantilla.render(dic_libros))
 
 
 # def listar_socios(request):
 #     socios = models.Socio.objects.all()
-
 #     dic_socios = {"socios": socios}
-
 #     plantilla = loader.get_template("listadoSocios.html")
-
 #     return HttpResponse(plantilla.render(dic_socios))
 
 
@@ -118,7 +107,6 @@ def index(request):
 #             return redirect("AppLibros:index")
 #     else:
 #         form = LibroForm()
-
 #     return render(request, "libro_form.html", {"form": form})
 
 
@@ -130,7 +118,6 @@ def index(request):
 #             return redirect("AppLibros:index")
 #     else:
 #         form = SocioForm()
-
 #     return render(request, "socio_form.html", {"form": form})
 
 
@@ -142,7 +129,6 @@ def index(request):
 #             return redirect("AppLibros:index")
 #     else:
 #         form = AutorForm()
-
 #     return render(request, "autor_form.html", {"form": form})
 
 
@@ -191,9 +177,10 @@ class SocioDetailView(DetailView):
 
 class SocioCreateView(CreateView):
     model = models.Socio
+    form_class = SocioForm
     template_name = "CBV_socioCrear.html"
     success_url = reverse_lazy("AppLibros:ListaSocios")
-    fields = ["nombre", "apellido", "fecha_nacimiento", "ficha_id"]
+    # fields = ["nombre", "apellido", "fecha_nacimiento", "ficha_id"]
 
 
 class SocioUpdateView(UpdateView):
@@ -223,9 +210,10 @@ class AutorDetailView(DetailView):
 
 class AutorCreateView(CreateView):
     model = models.Autor
+    form_class = AutorForm
     template_name = "CBV_autorCrear.html"
     success_url = reverse_lazy("AppLibros:ListaAutores")
-    fields = ["nombre", "apellido", "fecha_nacimiento"]
+    # fields = ["nombre", "apellido", "fecha_nacimiento"]
 
 
 class AutorUpdateView(UpdateView):
