@@ -163,4 +163,5 @@ cython_debug/
 # Otros
 apuntes.txt
 .DS_Store
-AppLibros/.DS_Store
+App*/.DS_Store
+*/*/.DS_Store
