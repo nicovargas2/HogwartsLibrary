@@ -1,0 +1,21 @@
+{% extends 'padre.html'%}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1> Editar perfil</h1>
+<form action='' method='POST'>
+    {% csrf_token %}
+    <table>
+        {{miFormulario}}
+    </table>
+    <input type="submit" value="Enviar">
+</form>
+
+<button type='button'>
+    <a href={% url "AppLibros:CambiarContrasena" %}>Cambiar contrasena
+    </a>
+</button>
+
+{% endblock contenido %}

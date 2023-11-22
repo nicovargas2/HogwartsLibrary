@@ -7,6 +7,8 @@ app_name = "AppLibros"
 
 urlpatterns = [
     path("index/", views.index, name="index"),
+    path("about/", views.about, name="about"),
+    path("contact/", views.contact, name="contact"),
     path("libro/buscar", views.buscar_libro, name="buscar_libro"),
     path("libro/buscar/resultados", views.buscar_libro_accion),
     path("autor/buscar", views.buscar_autor, name="buscar_autor"),
@@ -40,4 +42,6 @@ urlpatterns = [
     path("login", views.login_request, name="Login"),
     path("registro", views.registro, name="Registro"),
     path("logout", LogoutView.as_view(template_name="logout.html"), name="Logout"),
+    path("editarPerfil", views.editarPerfil, name="EditarPerfil"),
+    path("cambiarContrasena", views.CambiarPass.as_view(), name="CambiarContrasena"),
 ]
