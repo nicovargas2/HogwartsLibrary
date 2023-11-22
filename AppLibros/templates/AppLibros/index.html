@@ -1,0 +1,21 @@
+{% extends 'padre.html'%}
+
+{% load static %}
+
+{% block contenido %}
+
+{% if mensaje %}
+<p>{{ mensaje }}</p>
+{% endif %}
+
+<h1><u>Reglas básicas de convivencia </u></h1>
+<p>
+<ul>
+    <li>Los estudiantes deben mantener el decoro y comportarse de la mejor manera en todo momento.</li>
+    <li>Tanto la violencia física como la verbal están estrictamente prohibidas.</li>
+    <li>El consumo de alcohol y el uso de drogas y tabaco están estrictamente prohibidos.</li>
+    <li>No se permite el ingreso de las mascotas.</li>
+</ul>
+</p>
+
+{% endblock contenido %}

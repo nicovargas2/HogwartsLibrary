@@ -1,6 +1,6 @@
 from django import forms
 from .models import Libro, Autor, Socio
-from django.contrib.auth.forms import UserCreationForm, UserModel
+from django.contrib.auth.forms import UserCreationForm, UserModel, UserChangeForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
@@ -46,3 +46,14 @@ class UserCreationFormCustom(UserCreationForm):
         fields = ["username", "email", "password1", "password2"]
         # Para sacar los mensajes de ayuda
         help_texts = {k: "" for k in fields}
+
+
+class UserEditForm(UserChangeForm):
+    password = None
+    email = forms.EmailField(label="Ingrese su email: ")
+    last_name = forms.CharField(label="Apellido")
+    first_name = forms.CharField(label="Nombre")
+
+    class Meta:
+        model = User
+        fields = ["email", "last_name", "first_name"]
