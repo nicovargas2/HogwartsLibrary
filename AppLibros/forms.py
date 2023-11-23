@@ -27,7 +27,7 @@ class AutorForm(forms.ModelForm):
 class SocioForm(forms.ModelForm):
     class Meta:
         model = Socio
-        fields = ["nombre", "apellido", "fecha_nacimiento", "ficha_id"]
+        fields = ["nombre", "apellido", "fecha_nacimiento", "email"]
         widgets = {
             "fecha_nacimiento": DateInput(),
         }
