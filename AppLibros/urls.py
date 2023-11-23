@@ -2,6 +2,8 @@ from django.urls import path
 from . import views
 from django.contrib.auth.views import LogoutView
 
+
+
 app_name = "AppLibros"
 
 
@@ -45,3 +47,5 @@ urlpatterns = [
     path("editarPerfil", views.editarPerfil, name="EditarPerfil"),
     path("cambiarContrasena", views.CambiarPass.as_view(), name="CambiarContrasena"),
 ]
+
+
