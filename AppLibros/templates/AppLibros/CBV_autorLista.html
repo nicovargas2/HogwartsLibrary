@@ -6,13 +6,18 @@
 
 <h1> Listado de autores </h1>
 
+{% if user.is_authenticated and request.user.is_staff %}
 <a href={% url "AppLibros:NuevoAutor" %}>Nuevo Autor</a><span>&nbsp<span>
 <a href={% url "AppLibros:buscar_autor" %}>Buscar autor</a>
+{% endif %}
+
 {% for autor in autores %}
 <p> {{ autor.nombre }} {{ autor.apellido }} - {{ autor.fecha_nacimiento }}
+    {% if user.is_authenticated and request.user.is_staff %}
     <a href={% url "AppLibros:DetalleAutor" autor.pk %}>Ver</a>
     <a href={% url "AppLibros:EditarAutor" autor.pk %}>Editar</a>
     <a href={% url "AppLibros:BorrarAutor" autor.pk %}>Borrar</a>
+    {% endif %}
 </p>
 {% endfor %}
 
