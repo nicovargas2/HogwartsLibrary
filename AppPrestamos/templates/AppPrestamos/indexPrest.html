@@ -4,11 +4,93 @@
 
 {% block contenido %}
 
-{% if mensaje %}
-<p>{{ mensaje }}</p>
+<h3>Registrar prestamo</h3>
+
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
 {% endif %}
 
-<h1>Prestamos correcto!!</h1>
+<h4>
+    <a href={% url "AppPrestamos:ListaPrestamos" %}>Ver prestamos</a>
+</h4>
+
+<table id="general">
+    <tr>
+        <td>
+            <label for="sociosTable">
+                <h5>Socios</h5>
+            </label>
+            <table id="sociosTable">
+                <tr>
+                    <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">
+                        <b>id</b>
+                    </td>
+                    <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">
+                        <b>Nombre</b>
+                    </td>
+                    <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">
+                        <b>Apellido</b>
+                    </td>
+                </tr>
+                <tbody>
+                    {% for socio in lista_nombres %}
+                    <tr>
+                        <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">{{ socio.pk }}</td>
+                        <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">{{ socio.nombre }}
+                        </td>
+                        <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">{{ socio.apellido }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </td>
+        <td>
+            <label for="librosTable">
+                <h5>Libros</h5>
+            </label>
+            <table id="librosTable">
+                <tr>
+                    <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">
+                        <b>id</b>
+                    </td>
+                    <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">
+                        <b>Titulo</b>
+                    </td>
+                    <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">
+                        <b>Autor</b>
+                    </td>
+                </tr>
+                <tbody>
+                    {% for libro in lista_libros %}
+                    <tr>
+                        <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">{{ libro.pk }}</td>
+                        <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">{{ libro.titulo }}
+                        </td>
+                        <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">{{ libro.autor }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</table>
+
+
+<hr>
+
+<div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Enviar</button>
+    </form>
+</div>
 
 
 {% endblock contenido %}

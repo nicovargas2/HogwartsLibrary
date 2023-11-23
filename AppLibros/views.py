@@ -204,14 +204,14 @@ class SocioUpdateView(LoginRequiredMixin, UpdateView):
     model = models.Socio
     template_name = "CBV_socioEditar.html"
     success_url = reverse_lazy("AppLibros:ListaSocios")
-    fields = ["nombre", "apellido", "fecha_nacimiento", "ficha_id"]
+    fields = ["nombre", "apellido", "fecha_nacimiento", "email"]
 
 
 class SocioDeleteView(LoginRequiredMixin, DeleteView):
     model = models.Socio
     template_name = "CBV_socioBorrar.html"
     success_url = reverse_lazy("AppLibros:ListaSocios")
-    fields = ["nombre", "apellido", "fecha_nacimiento", "ficha_id"]
+    fields = ["nombre", "apellido", "fecha_nacimiento", "email"]
 
 
 class AutorListView(LoginRequiredMixin, ListView):

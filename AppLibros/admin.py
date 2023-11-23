@@ -21,6 +21,6 @@ class LibroAdmin(admin.ModelAdmin):
 
 @admin.register(Socio)
 class SocioAdmin(admin.ModelAdmin):
-    list_display = ("ficha_id", "nombre", "apellido", "fecha_nacimiento")
+    list_display = ("nombre", "apellido", "fecha_nacimiento", "email")
     list_filter = ("nombre", "apellido")
     search_fields = ("nombre", "apellido")

@@ -1,0 +1,47 @@
+{% extends 'padre.html'%}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1> Listado de prestamos </h1>
+
+<table id="sociosTable">
+    <tr>
+        <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">
+            <b>Id de socio</b>
+        </td>
+        <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">
+            <b>Id de libro</b>
+        </td>
+        <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">
+            <b>Devuelto</b>
+        </td>
+        <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">
+            <span>&nbsp</span>
+        </td>
+    </tr>
+    <tbody>
+        {% for p in prestamos %}
+        <tr>
+            <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">{{ p.socio_id }}</td>
+            <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">{{ p.libro_id }} </td>
+            <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">
+                {% if p.devuelto %}
+                <span>Sí </span>
+                {% else %}
+                <span>No </span>
+                {% endif %}
+            </td>
+            <td style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;"><a href={% url "AppPrestamos:EditarPrestamo" p.pk %}>Editar</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br />
+<p>
+    <a href={% url "AppPrestamos:index" %}>Regresar</a>
+</p>
+
+{% endblock contenido %}
