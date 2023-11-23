@@ -5,15 +5,19 @@
 {% block contenido %}
 
 <h1> Listado de libros </h1>
-
+{% if user.is_authenticated and request.user.is_staff %}
 <a href={% url "AppLibros:NuevoLibro" %}>Nuevo Libro</a> <span>&nbsp<span>
 <a href={% url "AppLibros:buscar_libro" %}>Buscar libro</a>
+{% endif %}
 
 {% for libro in libros %}
 <p> {{ libro.titulo }} - {{ libro.autor }}
+{% if user.is_authenticated and request.user.is_staff %}
     <a href={% url "AppLibros:DetalleLibro" libro.pk %}>Ver</a>
     <a href={% url "AppLibros:EditarLibro" libro.pk %}>Editar</a>
     <a href={% url "AppLibros:BorrarLibro" libro.pk %}>Borrar</a>
+{% endif %}
+
 </p>
 {% endfor %}
 
