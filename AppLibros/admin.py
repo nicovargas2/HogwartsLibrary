@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Autor
 from .models import Libro
-from .models import Socio
+from .models import Socio, Avatar
 
 
 # Register your models here.
@@ -24,3 +24,6 @@ class SocioAdmin(admin.ModelAdmin):
     list_display = ("nombre", "apellido", "fecha_nacimiento", "email")
     list_filter = ("nombre", "apellido")
     search_fields = ("nombre", "apellido")
+
+
+admin.site.register(Avatar)

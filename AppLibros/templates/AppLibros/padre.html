@@ -38,6 +38,10 @@
             <a class="btn btn-primary" href={% url "AppLibros:Login" %}>Login</a>
             <a class="btn btn-primary" href={% url "AppLibros:Registro" %}>Registrate</a>
             {% endif %}
+            {% if request.user.is_authenticated and request.user.avatar%}
+                <img src="{{request.user.avatar.imagen.url}}" alt="" height="60px" width="60px" />
+            {% endif %}
+
             <!-- <a class="btn btn-primary" href="#!">Sign Up</a> -->
         </div>
     </nav>
